@@ -33,11 +33,8 @@ catch (Exception $e) {
 ``` php
 array(
     'publication_date' => '2015-07-03',
-    'result'           =>
-        array(
-            'amount'   => '32.7246',
-            'currency' => 'USD',
-        ),
+    'amount'           => '32.7246',
+    'currency'         => 'USD'
 );
 ```
 

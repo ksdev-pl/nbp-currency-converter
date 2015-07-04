@@ -88,10 +88,8 @@ class NBPCurrencyConverter
 
         return [
             'publication_date' => $rates['data_publikacji'],
-            'result'           => [
-                'amount'   => $roundedResult,
-                'currency' => $toCurrency
-            ]
+            'amount'   => $roundedResult,
+            'currency' => $toCurrency
         ];
     }
 
