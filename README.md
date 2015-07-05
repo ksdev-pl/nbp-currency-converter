@@ -19,9 +19,17 @@ $ composer require ksdev/nbp-currency-converter
 ## Usage
 
 ``` php
-$converter = new Ksdev\NBPCurrencyConverter(
-    new GuzzleHttp\Client(), 
-    'path/to/cache/folder'
+use Ksdev\NBPCurrencyConverter\CurrencyConverter;
+use Ksdev\NBPCurrencyConverter\ExRatesDayTableFinder;
+use Ksdev\NBPCurrencyConverter\ExRatesDayTableFactory;
+use GuzzleHttp\Client;
+
+$converter = new CurrencyConverter(
+    new ExRatesDayTableFinder(
+        new Client(),
+        new ExRatesDayTableFactory(),
+        'path/to/cache/folder'
+    )
 );
 try {
     $result = $converter->convert('123.4567', 'PLN', 'USD')
