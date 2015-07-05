@@ -22,8 +22,8 @@ class CurrencyConverter
      */
     public function averageExchangeRates(\DateTime $pubDate = null)
     {
-        $file = $this->ratesTableFinder->getExRatesDayTable($pubDate);
-        return $file->parsedContent;
+        $ratesTable = $this->ratesTableFinder->getExRatesDayTable($pubDate);
+        return $ratesTable->parsedContent;
     }
 
     /**
