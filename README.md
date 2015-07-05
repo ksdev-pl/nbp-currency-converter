@@ -28,7 +28,7 @@ catch (Exception $e) {
 }
 ```
 
-## Result structure
+## Result
 
 ``` php
 array(
