@@ -26,6 +26,8 @@ class NBPCurrencyConverterTest extends \PHPUnit_Framework_TestCase
     {
         $converter = new NBPCurrencyConverter($this->guzzleMock(), null, 0);
 
+        $this->assertEquals('0.2651', $converter->convert('1.0000', 'PLN', 'USD')['amount']);
+        $this->assertEquals('3.7726', $converter->convert('1.0000', 'USD', 'PLN')['amount']);
         $this->assertEquals('123.4567', $converter->convert('123.4567', 'PLN', 'PLN')['amount']);
         $this->assertEquals('32.7246', $converter->convert('123.4567', 'PLN', 'USD')['amount']);
         $this->assertEquals('465.7527', $converter->convert('123.4567', 'USD', 'PLN')['amount']);
@@ -38,6 +40,10 @@ class NBPCurrencyConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('284.0662', $converter->convert('123.4567', 'JPY', 'HUF')['amount']);
         $this->assertEquals('53.6549', $converter->convert('123.4567', 'HUF', 'JPY')['amount']);
         $this->assertEquals('123.4567', $converter->convert('123.4567', 'JPY', 'JPY')['amount']);
+        $this->assertEquals('53654981.1634', $converter->convert('123456789.6789', 'HUF', 'JPY')['amount']);
+        $this->assertEquals('284066429.3850', $converter->convert('123456789.6789', 'JPY', 'HUF')['amount']);
+        $this->assertEquals('32724590.3830', $converter->convert('123456789.6789', 'PLN', 'USD')['amount']);
+        $this->assertEquals('465753084.7426', $converter->convert('123456789.6789', 'USD', 'PLN')['amount']);
     }
 
     public function testInvalidFormatOfAmount()
