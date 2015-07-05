@@ -20,14 +20,14 @@ $ composer require ksdev/nbp-currency-converter
 
 ``` php
 use Ksdev\NBPCurrencyConverter\CurrencyConverter;
-use Ksdev\NBPCurrencyConverter\ExRatesDayTableFinder;
-use Ksdev\NBPCurrencyConverter\ExRatesDayTableFactory;
+use Ksdev\NBPCurrencyConverter\ExRatesTableFinder;
+use Ksdev\NBPCurrencyConverter\ExRatesTableFactory;
 use GuzzleHttp\Client;
 
 $converter = new CurrencyConverter(
-    new ExRatesDayTableFinder(
+    new ExRatesTableFinder(
         new Client(),
-        new ExRatesDayTableFactory(),
+        new ExRatesTableFactory(),
         'path/to/cache/folder'
     )
 );

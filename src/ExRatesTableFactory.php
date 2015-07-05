@@ -2,17 +2,17 @@
 
 namespace Ksdev\NBPCurrencyConverter;
 
-class ExRatesDayTableFactory
+class ExRatesTableFactory
 {
     /**
-     * Get new ExRatesDayTable
+     * Get new ExRatesTable
      *
      * @param string $rawContent Raw xml content
      *
-     * @return ExRatesDayTable
+     * @return ExRatesTable
      */
     public function getInstance($rawContent)
     {
-        return new ExRatesDayTable($rawContent);
+        return new ExRatesTable($rawContent);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Ksdev\NBPCurrencyConverter;
 
-class ExRatesDayTable
+class ExRatesTable
 {
     /** @var string */
     public $rawContent;

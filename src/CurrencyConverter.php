@@ -6,7 +6,7 @@ class CurrencyConverter
 {
     private $ratesTableFinder;
 
-    public function __construct(ExRatesDayTableFinder $ratesTableFinder)
+    public function __construct(ExRatesTableFinder $ratesTableFinder)
     {
         $this->ratesTableFinder = $ratesTableFinder;
     }
@@ -22,7 +22,7 @@ class CurrencyConverter
      */
     public function averageExchangeRates(\DateTime $pubDate = null)
     {
-        $ratesTable = $this->ratesTableFinder->getExRatesDayTable($pubDate);
+        $ratesTable = $this->ratesTableFinder->getExRatesTable($pubDate);
         return $ratesTable->parsedContent;
     }
 

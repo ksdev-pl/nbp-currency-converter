@@ -3,8 +3,8 @@
 namespace Ksdev\NBPCurrencyConverter\Test;
 
 use Ksdev\NBPCurrencyConverter\CurrencyConverter;
-use Ksdev\NBPCurrencyConverter\ExRatesDayTableFactory;
-use Ksdev\NBPCurrencyConverter\ExRatesDayTableFinder;
+use Ksdev\NBPCurrencyConverter\ExRatesTableFactory;
+use Ksdev\NBPCurrencyConverter\ExRatesTableFinder;
 use Mockery;
 
 class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
@@ -39,7 +39,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvert()
     {
-        $converter = new CurrencyConverter(new ExRatesDayTableFinder($this->guzzleMock(), new ExRatesDayTableFactory()));
+        $converter = new CurrencyConverter(new ExRatesTableFinder($this->guzzleMock(), new ExRatesTableFactory()));
         $pubDate = new \DateTime('2015-07-03');
 
         $this->assertEquals('0.2651', $converter->convert('1.0000', 'PLN', 'USD', $pubDate)['amount']);
@@ -64,7 +64,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidPublicationDate()
     {
-        $converter = new CurrencyConverter(new ExRatesDayTableFinder($this->guzzleMock(), new ExRatesDayTableFactory()));
+        $converter = new CurrencyConverter(new ExRatesTableFinder($this->guzzleMock(), new ExRatesTableFactory()));
 
         $numExceptions = 0;
         try {
@@ -87,7 +87,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidFormatOfAmount()
     {
-        $converter = new CurrencyConverter(new ExRatesDayTableFinder($this->guzzleMock(), new ExRatesDayTableFactory()));
+        $converter = new CurrencyConverter(new ExRatesTableFinder($this->guzzleMock(), new ExRatesTableFactory()));
         $pubDate = new \DateTime('2015-07-03');
 
         $numExceptions = 0;
@@ -125,7 +125,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidCurrencyCode()
     {
-        $converter = new CurrencyConverter(new ExRatesDayTableFinder($this->guzzleMock(), new ExRatesDayTableFactory()));
+        $converter = new CurrencyConverter(new ExRatesTableFinder($this->guzzleMock(), new ExRatesTableFactory()));
         $pubDate = new \DateTime('2015-07-03');
 
         $converter->convert('123.4567', 'ABC', 'USD', $pubDate);
@@ -137,7 +137,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidCachePath()
     {
-        new CurrencyConverter(new ExRatesDayTableFinder($this->guzzleMock(), new ExRatesDayTableFactory(), '/this/folder/doesnotexist'));
+        new CurrencyConverter(new ExRatesTableFinder($this->guzzleMock(), new ExRatesTableFactory(), '/this/folder/doesnotexist'));
     }
 
     /**
@@ -168,7 +168,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
             ->andReturn($dirMock)
             ->mock();
 
-        $converter = new CurrencyConverter(new ExRatesDayTableFinder($guzzleMock, new ExRatesDayTableFactory()));
+        $converter = new CurrencyConverter(new ExRatesTableFinder($guzzleMock, new ExRatesTableFactory()));
         $pubDate = new \DateTime('2015-07-03');
         $converter->convert('123.4567', 'PLN', 'USD', $pubDate);
     }
@@ -188,7 +188,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
             ->andReturn('A good reason')
             ->mock();
 
-        $converter = new CurrencyConverter(new ExRatesDayTableFinder($guzzleMock, new ExRatesDayTableFactory()));
+        $converter = new CurrencyConverter(new ExRatesTableFinder($guzzleMock, new ExRatesTableFactory()));
         $converter->convert('123.4567', 'PLN', 'USD');
     }
 
@@ -223,7 +223,7 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
             ->andReturn($dirMock)
             ->mock();
 
-        $converter = new CurrencyConverter(new ExRatesDayTableFinder($guzzleMock, new ExRatesDayTableFactory(), __DIR__));
+        $converter = new CurrencyConverter(new ExRatesTableFinder($guzzleMock, new ExRatesTableFactory(), __DIR__));
         $pubDate = new \DateTime('2015-07-03');
         $converter->convert('123.4567', 'PLN', 'USD', $pubDate);
 

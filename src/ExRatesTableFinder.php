@@ -2,7 +2,7 @@
 
 namespace Ksdev\NBPCurrencyConverter;
 
-class ExRatesDayTableFinder
+class ExRatesTableFinder
 {
     const NBP_XML_URL = 'http://www.nbp.pl/kursy/xml/';
     const MAX_ONE_TIME_API_REQ = 7;
@@ -10,7 +10,7 @@ class ExRatesDayTableFinder
     /** @var \GuzzleHttp\Client */
     private $guzzle;
 
-    /** @var ExRatesDayTableFactory */
+    /** @var ExRatesTableFactory */
     private $ratesTableFactory;
 
     /** @var string */
@@ -21,14 +21,14 @@ class ExRatesDayTableFinder
 
     /**
      * @param \GuzzleHttp\Client $guzzle
-     * @param ExRatesDayTableFactory $ratesTableFactory
+     * @param ExRatesTableFactory $ratesTableFactory
      * @param string $cachePath Optional path to an existing folder where the cache files will be stored
      *
      * @throws \Exception
      */
     public function __construct(
         \GuzzleHttp\Client $guzzle,
-        ExRatesDayTableFactory $ratesTableFactory,
+        ExRatesTableFactory $ratesTableFactory,
         $cachePath = ''
     ) {
         $this->guzzle = $guzzle;
@@ -42,15 +42,15 @@ class ExRatesDayTableFinder
     }
 
     /**
-     * Get the ExRatesDayTable instance
+     * Get the ExRatesTable instance
      *
      * @param \DateTime $pubDate Optional rates table publication date
      *
-     * @return ExRatesDayTable
+     * @return ExRatesTable
      *
      * @throws \Exception
      */
-    public function getExRatesDayTable(\DateTime $pubDate = null)
+    public function getExRatesTable(\DateTime $pubDate = null)
     {
         $this->setSoughtPubDate($pubDate);
 
