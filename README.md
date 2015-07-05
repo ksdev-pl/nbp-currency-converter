@@ -19,7 +19,10 @@ $ composer require ksdev/nbp-currency-converter
 ## Usage
 
 ``` php
-$converter = new Ksdev\NBPCurrencyConverter(new GuzzleHttp\Client(), 'path/to/cache/folder');
+$converter = new Ksdev\NBPCurrencyConverter(
+    new GuzzleHttp\Client(), 
+    'path/to/cache/folder'
+);
 try {
     $result = $converter->convert('123.4567', 'PLN', 'USD')
 }
