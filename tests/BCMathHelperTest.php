@@ -11,6 +11,6 @@ class BCMathHelperTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('0.5679', BCMathHelper::bcround('0.567891', 4));
         $this->assertEquals('0.5676', BCMathHelper::bcround('0.567591', 4));
         $this->assertEquals('0.5676', BCMathHelper::bcround('0.567559', 4));
-        $this->assertEquals('0.5675', BCMathHelper::bcround('0.567544', 4));
+        $this->assertEquals('0.5675', BCMathHelper::bcround('0.567549', 4));
     }
 }
