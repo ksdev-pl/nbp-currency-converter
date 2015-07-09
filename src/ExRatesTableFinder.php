@@ -58,7 +58,7 @@ class ExRatesTableFinder
         do {
             // Limit the number of times the loop repeats
             if ($i === self::MAX_ONE_TIME_API_REQ) {
-                throw new \Exception('Max request to api limit has been reached');
+                throw new \Exception('Max requests to api limit has been reached');
             }
 
             // If user doesn't want a specific date, try to get the rates from the last working day
