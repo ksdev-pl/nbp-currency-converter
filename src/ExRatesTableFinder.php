@@ -5,6 +5,7 @@ namespace Ksdev\NBPCurrencyConverter;
 class ExRatesTableFinder
 {
     const NBP_XML_URL = 'http://www.nbp.pl/kursy/xml/';
+    const MIN_PUB_DATE = '2002-01-02';
     const MAX_ONE_TIME_API_REQ = 7;
 
     /** @var \GuzzleHttp\Client */
@@ -98,7 +99,7 @@ class ExRatesTableFinder
     private function setSoughtPubDate($pubDate)
     {
         if ($pubDate instanceof \DateTime) {
-            if (!($pubDate >= new \DateTime('2002-01-02') && $pubDate <= new \DateTime())) {
+            if (!($pubDate >= new \DateTime(self::MIN_PUB_DATE) && $pubDate <= new \DateTime())) {
                 throw new \Exception('Invalid publication date');
             }
         } else {
