@@ -18,7 +18,7 @@ $ composer require ksdev/nbp-currency-converter
 
 ## Usage
 
-If you don't pass a table publication date to `convert` or `averageExchangeRates` method, the last published average 
+If you don't pass a table publication date to `convert` or `averageExchangeRates` methods, the last published average 
 exchange rates table will be used, starting from yesterday, so e.g. on 2015-07-10 (friday) a table from 2015-07-09 
 (thursday) will be used, and on 2015-07-12 (sunday) a table from 2015-07-10 (friday) - unless no table was published on 
 this day, then the table from previous day will be used, etc.
