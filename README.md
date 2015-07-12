@@ -32,20 +32,53 @@ $converter = new CurrencyConverter(
     )
 );
 try {
-    $result = $converter->convert('123.4567', 'PLN', 'USD')
+    $result = $converter->convert('123.4567', 'PLN', 'USD');
+    $avgExRates = $converter->averageExchangeRates();
 }
 catch (Exception $e) {
     //
 }
 ```
 
-## Result
+###### $result
 
 ``` php
 array(
     'publication_date' => '2015-07-03',
     'amount'           => '32.7246',
     'currency'         => 'USD'
+);
+```
+
+###### $avgExRates
+
+```php
+array(
+    'numer_tabeli'    => '127/A/NBP/2015',
+    'data_publikacji' => '2015-07-03',
+    'waluty'          =>
+        array(
+            'PLN' =>
+                array(
+                    'nazwa_waluty' => 'złoty polski',
+                    'przelicznik'  => '1',
+                    'kurs_sredni'  => '1',
+                ),
+            'THB' =>
+                array(
+                    'nazwa_waluty' => 'bat (Tajlandia)',
+                    'przelicznik'  => '1',
+                    'kurs_sredni'  => '0,1117',
+                ),
+            'USD' =>
+                array(
+                    'nazwa_waluty' => 'dolar amerykański',
+                    'przelicznik'  => '1',
+                    'kurs_sredni'  => '3,7726',
+                ),
+            'AUD' =>
+                array(...)
+        )
 );
 ```
 
