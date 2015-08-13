@@ -57,7 +57,7 @@ class CurrencyConverter
         $toMultiplier = str_replace(',', '.', $rates['waluty'][$toCurrency]['przelicznik']);
         $toAverageRate = str_replace(',', '.', $rates['waluty'][$toCurrency]['kurs_sredni']);
 
-        bcscale(6);
+        bcscale(20);
         $plnAmount = bcdiv(bcmul($fromAmount, $fromAverageRate), $fromMultiplier);
         $resultAmount = bcdiv(bcmul($plnAmount, $toMultiplier), $toAverageRate);
         $roundedResult = BCMathHelper::bcround($resultAmount, 4);
